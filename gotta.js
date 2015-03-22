@@ -2,15 +2,38 @@
 /* jslint node:true */
 'use strict';
 
+/**
+ * Set up dependencies.
+ */
 var path = require('path');
 var fs = require('fs');
 
 var commander = require('commander');
-var colors = require('colors');
+var chalk = require('chalk');
 
+/**
+ * Package.json object.
+ * @type {Object}
+ */
 var pkg = require( path.join(__dirname, 'package.json') );
 
+/**
+ * Global tasks array.
+ * @type {Array.<Task>}
+ */
 var tasks;
+
+/**
+ * Checkmark unicode character
+ * @type {String}
+ */
+var checkMark = '✔';
+
+/**
+ * Uncheck unicode character.
+ * @type {String}
+ */
+var unCheckMark = '✗';
 
 /**
  * Try to parse gotta tasks file, if fails, create new one.
@@ -24,26 +47,27 @@ try {
 
 /**
  * Task object.
- * @param {string} taskName Name of the task.
+ * @param {String} taskName Name of the task.
  */
 var Task = function(taskName) {
 	this.name = taskName;
+	this.done = false;
 	this.createdAt = Date.now();
 };
 
 /**
  * Add a task to tasks.
- * @param {string} taskName The name of the task to add.
+ * @param {String} taskName The name of the task to add.
  */
 var addTask = function(taskName) {
 	var task = new Task(taskName);
 	tasks.push(task);
-	console.log('You gotta ' + taskName.green + '!');
+	console.log('You gotta ' + chalk.green(taskName) + '!');
 };
 
 /**
  * Remove a task from tasks.
- * @param {string} taskNamePart A part of the name of the todo to remove. 
+ * @param {String} taskNamePart A part of the name of the todo to remove. 
  */
 var removeTask = function(taskNamePart) {
 
@@ -52,13 +76,43 @@ var removeTask = function(taskNamePart) {
 	tasks.forEach(function(task, index) {
 		var taskName = task.name.toLowerCase();
 		if (taskName.indexOf(removeTask) != -1) {
-			console.log('Nice! you did: ' + tasks[index].name.green);
-			tasks.splice(index, 1);
+			console.log('Nice! you did: ' + chalk.green(tasks[index].name));
+			tasks[index].done = true;
 			found = true;
 		}
 	});
 	if (!found) {
-		console.log("Didn't find anything like " + taskNamePart.red + ' that you gotta do.');
+		console.log("Didn't find anything like " + chalk.red(taskNamePart) + ' that you gotta do.');
+	}
+};
+
+
+/**
+ * Removes all tasks marked as done
+ */
+var clear = function() {
+	var removeCount = 0;
+	var doneIndexes = [];
+	var i = 0;
+	
+	while (true){
+		if (i >= tasks.length) {
+			break;
+		}
+
+		if (tasks[i].done) {
+			tasks.splice(i, 1);
+			removeCount += 1;
+			i = 0;
+		}
+
+		i += 1;
+	}
+
+	if (removeCount) {
+		console.log('Removed ' + chalk.green(removeCount) + ' tasks.');
+	} else {
+		console.log("You haven't done " + chalk.red('any') + ' tasks.');
 	}
 };
 
@@ -66,14 +120,40 @@ var removeTask = function(taskNamePart) {
  * Show tasks needed to do.
  */
 var show = function() {
-	if (tasks.length) {
+	var doneTasks = [];
+	var doTasks = [];
+
+	tasks.forEach(function(task) {
+		if (task.done) {
+			doneTasks.push(task);
+		} else {
+			doTasks.push(task);
+		}
+	});
+		
+	if (doTasks.length) {
 		console.log('You gotta');
-		tasks.forEach(function(task) {
-			console.log('    ' + task.name.green);
+
+		doTasks.forEach(function(task) {
+			console.log('  ' + chalk.red(unCheckMark + ' ' + task.name));
 		});
+
+		if (doneTasks.length) {
+			doneTasks.forEach(function(doneTask) {
+				console.log('  ' + chalk.green(checkMark + ' ' + chalk.strikethrough(doneTask.name)));
+			});
+		}
+
 		console.log('\nGet to work!');
 	} else {
-		console.log("You ain't gotta do " + "nothin".green + '.');
+		if (doneTasks.length) {
+			console.log('You did');
+			doneTasks.forEach(function(doneTask) {
+				console.log('  ' + chalk.green(checkMark + ' ' + chalk.strikethrough(doneTask.name)));
+			});
+			console.log('');
+		}
+		console.log("You ain't gotta do " + chalk.green("nothin") + '.');
 		console.log('Go on, get!');
 	}
 };
@@ -92,10 +172,17 @@ commander
 	});
 
 commander
-	.command('did <task>')
-	.description('Remove a task you did.')
+	.command('done <task>')
+	.description('Mark a task as done.')
 	.action(function(task) {
 		removeTask(task);
+	});
+
+commander
+	.command('clear')
+	.description("Remove tasks marked as done.")
+	.action(function() {
+		clear();
 	});
 
 commander

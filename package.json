@@ -1,6 +1,6 @@
 {
   "name": "gotta",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A feisty, minimal command line todos manager.",
   "main": "gotta.js",
   "bin": "./gotta.js",
@@ -20,7 +20,7 @@
     "url": "git://github.com/Tankenstein/gotta.git"
   },
   "dependencies": {
-    "colors": "^1.0.3",
+    "chalk": "^1.0.0",
     "commander": "^2.7.1"
   }
 }

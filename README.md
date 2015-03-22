@@ -22,7 +22,7 @@ If node starts throwing ENOACCESS errors, do the following:
 * cd into the gotta folder
 * change permissions of tasks.json to 777, so on unix systems:
 ```
-chmod 777 tasks.json
+chmod 777 /usr/lib/node_modules/gotta/tasks.json
 ```
 
 Usage
@@ -32,9 +32,10 @@ gotta [options] [command]
 ```
 Commands:
 ```
-do <task>   Add a task you gotta do.
-did <task>  Remove a task you did.
-what        Show tasks you gotta do.
+do <task>    Add a task you gotta do.
+done <task>  Mark a task as done.
+clear        Remove tasks marked as done.
+what         Show tasks you gotta do.
 ```
 Options:
 ```
@@ -59,6 +60,10 @@ And if i did the laundry, i would go:
 gotta did "laundry"
 ```
 Removing a task doesn't need the full task, just a part of it.
+Now if i want to clear my done tasks, i would go:
+```
+gotta clear
+```
 
 Side note: gotta is awesome when you call it from .bashrc, to show what
 you gotta do today.
@@ -70,7 +75,7 @@ are and what sort of language to use.
 
 Gotta should whine when you leave something not done for a while.
 
-A special version of `gotta need` for when you're running it from .bashrc, 
+A special version of `gotta what` for when you're running it from .bashrc, 
 aka when you want it to show anytime you log onto terminal.
 
 If you have any more fun ideas, send them my way or make a pull request.
@@ -81,10 +86,6 @@ Screenshots
 
 License
 -------
-MIT
+Copyright (c) 2015 Uku Tammet
 
-Contributors
-------------
-Seriously? i'm adding a contributors on this?
-
-Uku Tammet
+Licensed under MIT.
