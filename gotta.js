@@ -88,7 +88,6 @@ commander
 	.command('do <task>')
 	.description('Add a task you gotta do.')
 	.action(function(task) {
-		console.log(task);
 		addTask(task);
 	});
 
