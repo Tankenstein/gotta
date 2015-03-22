@@ -17,12 +17,12 @@ gotta --version
 ```
 to see if it's installed.
 
-If node starts throwing ENOACCESS errors, do the following:
+If node starts throwing EACCES errors, do the following:
 * cd into your global node_modules folder
 * cd into the gotta folder
 * change permissions of tasks.json to 777, so on unix systems:
 ```
-chmod 777 /usr/lib/node_modules/gotta/tasks.json
+sudo chmod 777 /usr/lib/node_modules/gotta/tasks.json
 ```
 
 Usage
@@ -82,7 +82,7 @@ If you have any more fun ideas, send them my way or make a pull request.
 
 Screenshots
 -----------
-![Image of gotta in action.](http://i.imgur.com/c05bRGv.png)
+![Image of gotta in action.](http://i.imgur.com/wP5kfQt.png)
 
 License
 -------
