@@ -24,7 +24,7 @@ gotta [options] [command]
 ```
 Commands:
 ```
-do <task>      Add a task you gotta do.
+do <task>   Add a task you gotta do.
 did <task>  Remove a task you did.
 what        Show tasks you gotta do.
 ```
@@ -65,9 +65,11 @@ Gotta should whine when you leave something not done for a while.
 A special version of `gotta need` for when you're running it from .bashrc, 
 aka when you want it to show anytime you log onto terminal.
 
-Screenshots to readme.
-
 If you have any more fun ideas, send them my way or make a pull request.
+
+Screenshots
+-----------
+![Image of gotta in action.](http://i.imgur.com/c05bRGv.png)
 
 License
 -------
@@ -78,4 +80,3 @@ Contributors
 Seriously? i'm adding a contributors on this?
 
 Uku Tammet
-...
