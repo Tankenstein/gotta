@@ -1,0 +1,8 @@
+# Ignore stuff made by other people (awesome stuff)
+node_modules/
+
+# Ignore my tasks
+tasks.json
+
+# Ignore my oopsies
+npm-debug.log

@@ -1,0 +1,26 @@
+{
+  "name": "gotta",
+  "version": "0.1.0",
+  "description": "A feisty, minimal command line todos manager.",
+  "main": "gotta.js",
+  "bin": "./gotta.js",
+  "scripts": {
+    "test": "gotta --version"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "todo",
+    "cli"
+  ],
+  "author": "Uku Tammet",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Tankenstein/gotta.git"
+  },
+  "dependencies": {
+    "colors": "^1.0.3",
+    "commander": "^2.7.1"
+  }
+}
