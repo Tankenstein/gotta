@@ -8,12 +8,12 @@ in the terminal.
 Installing
 ----------
 ```
-npm install gotta -g
+$ npm install gotta -g
 ```
 Maybe you gotta add sudo, maybe you don't.
 Run
 ```
-gotta --version
+$ gotta --version
 ```
 to see if it's installed.
 
@@ -22,13 +22,17 @@ If node starts throwing EACCES errors, do the following:
 * cd into the gotta folder
 * change permissions of tasks.json to 777, so on unix systems:
 ```
-sudo chmod 777 /usr/lib/node_modules/gotta/tasks.json
+$ sudo chmod 777 /usr/lib/node_modules/gotta/tasks.json
 ```
+
+Screenshots
+-----------
+![Image of gotta in action.](http://i.imgur.com/wP5kfQt.png)
 
 Usage
 -----
 ```
-gotta [options] [command]
+$ gotta [options] [command]
 ```
 Commands:
 ```
@@ -44,25 +48,25 @@ Options:
 ```
 So for instance, if i gotta write some tests for gotta, i would go:
 ```
-gotta do "write some tests for gotta"
+$ gotta do "write some tests for gotta"
 ```
 Or do the laundry:
 ```
-gotta do "the laundry"
+$ gotta do "the laundry"
 ```
 Whatever you gotta do man.
 Later, when i want to see what i gotta do, i would go:
 ```
-gotta what
+$ gotta what
 ```
 And if i did the laundry, i would go:
 ```
-gotta did "laundry"
+$ gotta did "laundry"
 ```
 Removing a task doesn't need the full task, just a part of it.
 Now if i want to clear my done tasks, i would go:
 ```
-gotta clear
+$ gotta clear
 ```
 
 Side note: gotta is awesome when you call it from .bashrc, to show what
@@ -79,10 +83,6 @@ A special version of `gotta what` for when you're running it from .bashrc,
 aka when you want it to show anytime you log onto terminal.
 
 If you have any more fun ideas, send them my way or make a pull request.
-
-Screenshots
------------
-![Image of gotta in action.](http://i.imgur.com/wP5kfQt.png)
 
 License
 -------
