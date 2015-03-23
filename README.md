@@ -59,9 +59,9 @@ Later, when i want to see what i gotta do, i would go:
 ```
 $ gotta what
 ```
-And if i did the laundry, i would go:
+And if the laundry's done, i would go:
 ```
-$ gotta did "laundry"
+$ gotta done "laundry"
 ```
 Removing a task doesn't need the full task, just a part of it.
 Now if i want to clear my done tasks, i would go:
