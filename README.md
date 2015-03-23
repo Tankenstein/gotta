@@ -17,13 +17,7 @@ $ gotta --version
 ```
 to see if it's installed.
 
-If node starts throwing EACCES errors, do the following:
-* cd into your global node_modules folder
-* cd into the gotta folder
-* change permissions of tasks.json to 777, so on unix systems:
-```
-$ sudo chmod 777 /usr/lib/node_modules/gotta/tasks.json
-```
+Gotta puts a .gottadata file in your home directory.
 
 Screenshots
 -----------

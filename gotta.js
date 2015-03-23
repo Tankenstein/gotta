@@ -6,7 +6,7 @@
  *
  * Github repo: https://github.com/Tankenstein/gotta
  * Author: Uku Tammet
- * Version: 0.2.2
+ * Version: 0.2.3
  */
 
 'use strict';
@@ -18,15 +18,23 @@ var fs = require('fs');
  * Set up dependencies.
  * Commander is used for command line arguments parsing.
  * Chalk is used for output styling.
+ * osenv is used for getting platform-agnostic paths.
  */
 var commander = require('commander');
 var chalk = require('chalk');
+var osenv = require('osenv');
 
 /**
  * Package.json object.
  * @type {Object}
  */
 var pkg = require( path.join(__dirname, 'package.json') );
+
+/**
+ * Get tasks file path.
+ * @type {String}
+ */
+var tasksPath = path.join(osenv.home(), '.gottadata');
 
 /**
  * Global tasks array.
@@ -53,13 +61,13 @@ var unCheckMark = '✗';
 var day = 86400000;
 
 /**
- * Try to parse gotta tasks file, if fails, create new one.
+ * Try to read tasks, creating a file if no file found.
  */
 try {
-	tasks = require( path.join(__dirname, 'tasks.json') );
+	tasks = JSON.parse(fs.readFileSync(tasksPath, 'utf8'));
 } catch (error) {
-	fs.writeFileSync( 'tasks.json' , '[]');
-	tasks = require( path.join(__dirname, 'tasks.json') );
+	fs.writeFileSync( tasksPath , '[]');
+	tasks = JSON.parse(fs.readFileSync(tasksPath, 'utf8'));
 }
 
 /**
@@ -85,10 +93,8 @@ var addTask = function(taskName) {
 			if (task.done) {
 				doneIndexes.push(index);
 			} else {
-
 				console.log('You already gotta ' + chalk.red(task.name) + '!');
 			}
-
 			found = true;
 		}
 	});
@@ -264,4 +270,4 @@ if (!process.argv.slice(2).length) {
 /**
  * Write tasks to file.
  */
-fs.writeFileSync(path.join(__dirname, 'tasks.json'), JSON.stringify(tasks, null, 2));
+fs.writeFileSync(tasksPath, JSON.stringify(tasks, null, 2));

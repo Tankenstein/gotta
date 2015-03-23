@@ -1,6 +1,6 @@
 {
   "name": "gotta",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A feisty, minimal command line todos manager.",
   "main": "gotta.js",
   "bin": "./gotta.js",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "chalk": "^1.0.0",
-    "commander": "^2.7.1"
+    "commander": "^2.7.1",
+    "osenv": "^0.1.0"
   }
 }
