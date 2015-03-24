@@ -6,7 +6,7 @@
  *
  * Github repo: https://github.com/Tankenstein/gotta
  * Author: Uku Tammet
- * Version: 0.2.3
+ * Version: 0.2.4
  */
 
 'use strict';
@@ -25,16 +25,11 @@ var chalk = require('chalk');
 var osenv = require('osenv');
 
 /**
- * Package.json object.
- * @type {Object}
- */
-var pkg = require( path.join(__dirname, 'package.json') );
-
-/**
  * Get tasks file path.
  * @type {String}
  */
-var tasksPath = path.join(osenv.home(), '.gottadata');
+var tasksFileName = '.gottadatatest';
+var tasksPath = path.join(osenv.home(), tasksFileName);
 
 /**
  * Global tasks array.
