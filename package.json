@@ -5,7 +5,7 @@
   "main": "gotta.js",
   "bin": "./bin/gotta.js",
   "scripts": {
-    "test": "gotta --version"
+    "test": "mocha"
   },
   "keywords": [
     "javascript",
