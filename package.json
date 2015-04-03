@@ -1,8 +1,8 @@
 {
   "name": "gotta",
-  "version": "0.3.0",
+  "version": "0.2.4",
   "description": "A feisty, minimal command line todos manager.",
-  "main": "gotta.js",
+  "main": "./index.js",
   "bin": "./bin/gotta.js",
   "scripts": {
     "test": "mocha"
