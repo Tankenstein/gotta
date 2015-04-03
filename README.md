@@ -1,5 +1,5 @@
 gotta - A feisty, minimal command line todos manager.
------------------------------------------------------
+=====================================================
 
 I sometimes feel like super quickly jutting down something i gotta do.
 I'm in the terminal a lot, so i felt like i should be able to do that
